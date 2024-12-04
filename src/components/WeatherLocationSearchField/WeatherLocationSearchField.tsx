@@ -48,6 +48,7 @@ function WeatherLocationSearchField(props: WeatherLocationSearchFieldModel) {
   return (
     <>
       <Autocomplete
+        size="small"
         sx={{ backgroundColor: "#fff" }}
         disableClearable
         filterOptions={(options) => options}
@@ -59,7 +60,7 @@ function WeatherLocationSearchField(props: WeatherLocationSearchFieldModel) {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Search for your location"
+            label="Search for place"
             onChange={(event) => {
               setSearchKey(event.target.value);
             }}

@@ -41,7 +41,7 @@ const StyledAirQualityContainer = styled.div`
 
   & .content {
     display: flex;
-    justify-content: space-between;
+    flex-wrap:wrap;
     margin-top: 16px;
     gap: 32px;
   }
@@ -61,13 +61,14 @@ const StyledAirQualityContainer = styled.div`
   }
 
   & .air-quality-chart {
-    min-width: 260px;
+    min-width: 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
     border-radius: 12px;
     padding: 16px;
+
     & .chart-title {
       display: flex;
       align-items: center;
@@ -76,6 +77,12 @@ const StyledAirQualityContainer = styled.div`
       text-align: center;
       font-weight: bold;
     }
+  }
+
+  @media (max-width: 768px) {
+    // & .content {
+    //   flex-direction: column;
+    // }
   }
 `;
 

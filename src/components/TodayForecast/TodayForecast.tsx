@@ -12,12 +12,17 @@ const StyledTodayForecastContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 32px;
+  gap: 16px;
 
   & .weather-forecast-list {
-    margin: 0px 16px;
-    width: 60%;
     display: flex;
+    padding: 8px 16px;
     overflow-y: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
@@ -58,14 +63,19 @@ function TodayForecast(props: TodayForecastModel) {
     return [];
   };
 
+  const weatherForecastList = getWeatherHourlyForecastConfigList();
+
   return (
     <StyledTodayForecastContainer>
       <CurrentWeather {...getCurrentWeatherConfig(weatherDetails)} />
-      <Box className="weather-forecast-list">
-        {getWeatherHourlyForecastConfigList().map((config) => (
-          <WeatherForecast key={config.time} {...config} />
-        ))}
-      </Box>
+
+      {weatherForecastList.length > 0 && (
+        <Box className="weather-forecast-list">
+          {weatherForecastList.map((config) => (
+            <WeatherForecast key={config.time} {...config} />
+          ))}
+        </Box>
+      )}
     </StyledTodayForecastContainer>
   );
 }

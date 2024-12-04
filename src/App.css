@@ -18,3 +18,28 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* For webkit-based browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 6px;
+  /* Set the width of the vertical scrollbar */
+  height: 6px;
+  /* Set the height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Set scrollbar thumb color */
+  border-radius: 3px;
+  /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b6a6a;
+  /* Change color on hover */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Set the track (background) color */
+}

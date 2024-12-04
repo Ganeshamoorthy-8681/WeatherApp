@@ -13,6 +13,7 @@ import { WeatherForecastAccordionModel } from "../WeatherForecastAccordion/Weath
 import AirQuality from "../AirQuality/AirQuality";
 import { TimeUtil } from "../../utils/TimeUtil";
 import EmptyCard from "../EmptyCard/EmptyCard";
+import WeatherAppIcon from "../../assets/weather-icon.png";
 
 interface CurrentWeatherInsights {
   astro: Astro;
@@ -34,14 +35,39 @@ const StyledWeatherAppBaseContainer = styled.div`
   }
 
   & .page-header {
-    height: 64px;
+    height: 48px;
     background-color: #e9ebf6;
     padding: 16px;
-    // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
 
     & .search-field {
-      max-width: 600px;
-      margin: auto;
+      flex-basis: 500px;
+      flex-shrink: 2;
+    }
+
+    & .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      & img {
+        width: 48px;
+      }
+
+      & .description {
+        margin-left: 8px;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    }
+
+    @media (max-width: 768px) {
+      & .page-content {
+        padding: 16px;
+      }
     }
   }
 `;
@@ -125,6 +151,10 @@ function WeatherAppBase() {
       )}
       <StyledWeatherAppBaseContainer>
         <Box className="page-header" component={"div"}>
+          <Box className="logo">
+            <img src={WeatherAppIcon} alt="weather-app-logo" />
+            {/* <span className="description"> Weather Wise</span> */}
+          </Box>
           <Box className="search-field">
             <WeatherLocationSearchField
               onChange={handleWeatherLocationChange}

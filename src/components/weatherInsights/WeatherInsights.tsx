@@ -44,14 +44,14 @@ function createWeatherAttributeConfig(title: string, value: string, imgSrc: stri
 function WeatherInsights(props: WeatherInsightsModel) {
   const { insights, astro } = props;
   function getWeatherAttributeConfigList(): WeatherAttributeModel[] {
-    const windSpeedConfig = createWeatherAttributeConfig("WIND", `${insights.wind_mph} /Mph`, windImg);
+    const windSpeedConfig = createWeatherAttributeConfig("WIND", `${insights.wind_mph} Mph`, windImg);
     const sunRiseConfig = createWeatherAttributeConfig("SUNRISE", astro.sunrise, SunRiseImg);
     const sunSetConfig = createWeatherAttributeConfig("SUNSET", astro.sunset, SunsetImg);
-    const precipitationConfig = createWeatherAttributeConfig("PRECIPITATION", insights.precip_mm.toString(), PrecipitationImg);
-    const humidityConfig = createWeatherAttributeConfig("HUMIDITY", insights.humidity.toString(), HumidityImg);
-    const pressureConfig = createWeatherAttributeConfig("PRESSURE", insights.pressure_mb.toString(), PressureImg);
-    const feelsLikeConfig = createWeatherAttributeConfig("FEELS LIKE", insights.feelslike_c.toString(), FeelsLikeImg);
-    const visibilityConfig = createWeatherAttributeConfig("VISIBILITY", `${insights.vis_km} /Km`, VisibilityImg);
+    const precipitationConfig = createWeatherAttributeConfig("PRECIPITATION", `${insights.precip_mm.toString()} Mm`, PrecipitationImg);
+    const humidityConfig = createWeatherAttributeConfig("HUMIDITY", `${insights.humidity.toString()} %`, HumidityImg);
+    const pressureConfig = createWeatherAttributeConfig("PRESSURE", `${insights.pressure_mb.toString()} Mb`, PressureImg);
+    const feelsLikeConfig = createWeatherAttributeConfig("FEELS LIKE", `${insights.feelslike_c.toString()}`, FeelsLikeImg);
+    const visibilityConfig = createWeatherAttributeConfig("VISIBILITY", `${insights.vis_km} Km`, VisibilityImg);
 
     return [
       sunRiseConfig,

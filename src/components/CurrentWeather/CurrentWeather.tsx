@@ -15,7 +15,6 @@ const StyledCurrentWeatherContainer = styled.div.withConfig({
 })<StyledCurrentWeatherContainerModel>`
   display: flex;
   justify-content: space-between;
-  width: ${(props) => `${props.width}%`};
   padding: 8px 16px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15);
@@ -33,7 +32,7 @@ const StyledCurrentWeatherContainer = styled.div.withConfig({
   }
 
   & img {
-    align-self: flex-start;
+    align-self: flex-end;
   }
   & .location {
     display: flex;
@@ -43,6 +42,7 @@ const StyledCurrentWeatherContainer = styled.div.withConfig({
   & .time {
     color: #898989;
   }
+
 `;
 
 const DayIcon = () => <WbSunny sx={{ fill: "yellow" }} />;
