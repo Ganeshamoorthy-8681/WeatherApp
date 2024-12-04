@@ -1,3 +1,0 @@
-# WeatherApp
-
-### USING REACT APP
