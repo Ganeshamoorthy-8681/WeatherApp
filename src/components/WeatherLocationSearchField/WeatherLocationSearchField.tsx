@@ -22,16 +22,16 @@ const StyledAutoCompleteOptionContainer = styled.div`
 function WeatherLocationSearchField(props: WeatherLocationSearchFieldModel) {
   const [searchKey, setSearchKey] = useState("");
   const [options, setOptions] = useState<LocationSearchResponseModel[]>([]);
+  const [loading, setLoading] = useState(false);
   const { optionsResolver, onChange } = props;
 
   const countryMap = useMemo(() => new Map(countries.map(({ name, code }) => [name, code])), []);
 
-  let isLoading = false;
-
   const onSearchKeyChange = useCallback(
     async function () {
+      setLoading(true);
       const options = await optionsResolver(searchKey);
-      isLoading = true;
+      setLoading(false);
       setOptions(options);
     },
     [optionsResolver, searchKey]
@@ -48,11 +48,12 @@ function WeatherLocationSearchField(props: WeatherLocationSearchFieldModel) {
   return (
     <>
       <Autocomplete
+        sx={{ backgroundColor: "#fff" }}
         disableClearable
         filterOptions={(options) => options}
         disablePortal
         options={options}
-        loading={isLoading}
+        loading={loading}
         getOptionLabel={(option) => `${option.name}`}
         onChange={(_, value) => onChange(value as LocationSearchResponseModel)}
         renderInput={(params) => (

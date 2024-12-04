@@ -10,7 +10,7 @@ const StyledWeatherAttributeContainer = styled.div`
   box-sizing: border-box;
   gap: 32px;
   border-radius: 12px;
-  background-color: #eff1f9;
+  background-color: #fff;
 
   & .attr-image {
     width: 25%;
@@ -41,7 +41,7 @@ function WeatherAttribute(props: WeatherAttributeModel) {
         <img src={props.imgSrc} />
       </Box>
       <Box className="attr-text-wrapper">
-        <Typography variant="body1" component="h6" className="title">
+        <Typography variant="body1" className="title">
           {props.title}
         </Typography>
 

@@ -8,7 +8,7 @@ const StyledWeatherForecastContainer = styled.div`
   padding: 8px 16px;
   align-items: center;
   justify-content: center;
-  width: 120px;
+  min-width: 100px;
   background-color: #e9ebf6;
   border-radius: 12px;
   margin: 8px;
@@ -34,16 +34,13 @@ function WeatherForecast(props: WeatherForeCastModel) {
         }
       }}
     >
-      <Typography variant="h6" className="time">
+      <Typography variant="body1" className="time">
         {props.time}
       </Typography>
       <Box>
         <img src={props.imgSrc} alt="" />
       </Box>
-      <Typography variant="h5"> {props.temperature}&#176;C</Typography>
-      {/* <Typography variant="h6" className="weather-condition">
-        {props.conditionText}
-      </Typography> */}
+      <Typography variant="h6"> {props.temperature}&#176;C</Typography>
     </StyledWeatherForecastContainer>
   );
 }

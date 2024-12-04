@@ -11,9 +11,9 @@ const WeatherForecastAccordionHeaderContainer = styled.div`
   height: 48px;
   width: 100%;
   padding: 0px 16px;
+
   & .title {
     color: #898989;
-    font-weight: bold;
   }
 
   & .weather-condition {
@@ -26,7 +26,7 @@ const WeatherForecastAccordionHeaderContainer = styled.div`
 
 const WeatherForecastAccordionContentContainer = styled.div`
   display: flex;
-  border-top: 1px solid grey;
+  // border-top: 1px solid grey;
   overflow-y: auto;
 `;
 
@@ -34,7 +34,7 @@ function WeatherForecastAccordion(props: WeatherForecastAccordionModel) {
   return (
     <>
       <Accordion defaultExpanded={props.isAccordionOpen ?? false}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <AccordionSummary sx={{ background: "#e9ebf6" }} expandIcon={<ExpandMoreIcon />}>
           <WeatherForecastAccordionHeaderContainer>
             <Typography variant="h6" className="title">
               {props.header.title}
@@ -45,7 +45,6 @@ function WeatherForecastAccordion(props: WeatherForecastAccordionModel) {
             </Box>
           </WeatherForecastAccordionHeaderContainer>
         </AccordionSummary>
-
         <AccordionDetails>
           <WeatherForecastAccordionContentContainer>
             {props?.content?.data?.map((weatherForecastData) => (

@@ -6,10 +6,12 @@ import { CurrentWeatherModel } from "../CurrentWeather/CurrentWeatherModel";
 import Box from "@mui/material/Box";
 import { WeatherForeCastModel } from "../WeatherForecast/WeatherForecastModel";
 import WeatherForecast from "../WeatherForecast/WeatherForecast";
+import { TimeUtil } from "../../utils/TimeUtil";
 
 const StyledTodayForecastContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 32px;
 
   & .weather-forecast-list {
     margin: 0px 16px;
@@ -28,14 +30,13 @@ const getCurrentWeatherConfig = (weatherData: WeatherForeCastResponseModel) => {
     condition: currentWeatherData.condition.text,
     imgSrc: currentWeatherData.condition.icon.replaceAll("64", "128"),
     isDay: !!currentWeatherData.is_day,
-    time: weatherData.location.localtime,
+    time: `Today, ${TimeUtil.getDateString(weatherData.current.last_updated_epoch as number)}`,
   };
   return currentWeatherConfig;
 };
 
 function TodayForecast(props: TodayForecastModel) {
   const { weatherDetails, handleForecastClickEvent } = props;
-
 
   const getWeatherHourlyForecastConfigList = (): WeatherForeCastModel[] => {
     const todayHourlyForecastList = weatherDetails.forecast.forecastday.at(0)?.hour;
@@ -44,7 +45,7 @@ function TodayForecast(props: TodayForecastModel) {
       const WeatherForeCastConfigList = foreCastList?.map((forecast) => {
         const config: WeatherForeCastModel = {
           id: forecast.time_epoch,
-          time: forecast.time.split(" ").at(1) ?? "",
+          time: TimeUtil.convertTo12Hour(forecast.time.split(" ").at(1) || ""),
           imgSrc: forecast.condition.icon,
           temperature: forecast.temp_c.toString(),
           conditionText: forecast.condition.text,

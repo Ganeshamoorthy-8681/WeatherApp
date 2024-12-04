@@ -16,14 +16,15 @@ const StyledWeatherDetailsContent = styled.div`
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 16px;
 `;
 
 const StyledWeatherDetailsContainer = styled.div`
   padding: 16px;
-  margin: 16px;
+  margin-top: 32px;
   background-color: #e9ebf6;
+  border-radius: 12px;
 
   & .header {
     margin-left: 16px;
@@ -67,15 +68,13 @@ function WeatherInsights(props: WeatherInsightsModel) {
   return (
     <StyledWeatherDetailsContainer>
       <Typography variant="h6" className="header">
-        WEATHER INSIGHTS
+        Weather Insights
       </Typography>
       <StyledWeatherDetailsContent>
         {getWeatherAttributeConfigList().map((config) => (
           <WeatherAttribute key={config.title} {...config} />
         ))}
       </StyledWeatherDetailsContent>
-
-      
     </StyledWeatherDetailsContainer>
   );
 }

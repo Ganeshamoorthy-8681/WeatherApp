@@ -30,7 +30,9 @@ AirQualityIndexMapperForGbIndex[10] = { text: "Very High", color: "Red" };
 const StyledAirQualityContainer = styled.div`
   padding: 16px;
   background-color: #e9ebf6;
-  margin: 16px;
+  margin-top: 32px;
+  border-radius: 12px;
+
   & .title {
     color: #898989;
     margin-left: 16px;
@@ -39,7 +41,7 @@ const StyledAirQualityContainer = styled.div`
 
   & .content {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 16px;
     gap: 32px;
   }
@@ -55,7 +57,7 @@ const StyledAirQualityContainer = styled.div`
       left: 30%;
       font-weight: bold;
     }
-    background-color: #eff1f9;
+    background-color: #fff;
   }
 
   & .air-quality-chart {
@@ -63,7 +65,7 @@ const StyledAirQualityContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #eff1f9;
+    background-color: #fff;
     border-radius: 12px;
     padding: 16px;
     & .chart-title {
@@ -120,7 +122,7 @@ function AirQuality(props: AirQualityModel) {
   return (
     <StyledAirQualityContainer>
       <Typography variant="h6" className="title">
-        AIR QUALITY
+        Air Quality
       </Typography>
 
       <div className="content">
