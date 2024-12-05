@@ -10,15 +10,18 @@ import { TimeUtil } from "../../utils/TimeUtil";
 
 const StyledTodayForecastContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-top: 32px;
   gap: 16px;
 
-  & .weather-forecast-list {
-    display: flex;
-    padding: 8px 16px;
-    overflow-y: auto;
+  & .weather-forecast-list-container {
+    padding: 8px;
+    overflow:hidden;
+    background: #ebe9f9f6;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    & .weather-forecast-list {
+      display: flex;
+      overflow-y: auto;
+    }
   }
 
   @media (max-width: 768px) {
@@ -69,13 +72,15 @@ function TodayForecast(props: TodayForecastModel) {
     <StyledTodayForecastContainer>
       <CurrentWeather {...getCurrentWeatherConfig(weatherDetails)} />
 
-      {weatherForecastList.length > 0 && (
-        <Box className="weather-forecast-list">
-          {weatherForecastList.map((config) => (
-            <WeatherForecast key={config.time} {...config} />
-          ))}
-        </Box>
-      )}
+      <Box className="weather-forecast-list-container">
+        {weatherForecastList.length > 0 && (
+          <Box className="weather-forecast-list">
+            {weatherForecastList.map((config) => (
+              <WeatherForecast key={config.time} {...config} />
+            ))}
+          </Box>
+        )}
+      </Box>
     </StyledTodayForecastContainer>
   );
 }

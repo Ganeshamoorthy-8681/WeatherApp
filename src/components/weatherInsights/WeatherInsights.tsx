@@ -18,6 +18,11 @@ const StyledWeatherDetailsContent = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 16px;
+
+  @media (max-width: 576px) {
+    gap: 1rem;
+    justify-content: center;
+  }
 `;
 
 const StyledWeatherDetailsContainer = styled.div`

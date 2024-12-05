@@ -8,13 +8,9 @@ const WeatherForecastAccordionHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 48px;
+  box-sizing: border-box;
   width: 100%;
-  padding: 0px 16px;
-
-  & .title {
-    color: #898989;
-  }
+  color: #fff;
 
   & .weather-condition {
     display: flex;
@@ -22,11 +18,13 @@ const WeatherForecastAccordionHeaderContainer = styled.div`
     gap: 12px;
     margin-right: 12px;
   }
+  & img {
+    width: 48px;
+  }
 `;
 
 const WeatherForecastAccordionContentContainer = styled.div`
   display: flex;
-  // border-top: 1px solid grey;
   overflow-y: auto;
 `;
 
@@ -34,9 +32,15 @@ function WeatherForecastAccordion(props: WeatherForecastAccordionModel) {
   return (
     <>
       <Accordion defaultExpanded={props.isAccordionOpen ?? false}>
-        <AccordionSummary sx={{ background: "#e9ebf6" }} expandIcon={<ExpandMoreIcon />}>
+        <AccordionSummary
+          sx={{
+            background: "#42516E",
+            "& .MuiAccordionSummary-content.Mui-expanded, & .MuiAccordionSummary-content ": { margin: "8px 0px !important" },
+          }}
+          expandIcon={<ExpandMoreIcon sx={{ color: "#fff" }} />}
+        >
           <WeatherForecastAccordionHeaderContainer>
-            <Typography variant="h6" className="title">
+            <Typography variant="subtitle1" className="title">
               {props.header.title}
             </Typography>
             <Box className="weather-condition">
@@ -45,7 +49,8 @@ function WeatherForecastAccordion(props: WeatherForecastAccordionModel) {
             </Box>
           </WeatherForecastAccordionHeaderContainer>
         </AccordionSummary>
-        <AccordionDetails>
+
+        <AccordionDetails sx={{ backgroundColor: "#e9ebf9f6" }}>
           <WeatherForecastAccordionContentContainer>
             {props?.content?.data?.map((weatherForecastData) => (
               <WeatherForecast key={weatherForecastData.id} {...weatherForecastData} />

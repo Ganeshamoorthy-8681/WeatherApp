@@ -5,19 +5,22 @@ import { Box, Typography } from "@mui/material";
 const StyledWeatherForecastContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 8px 16px;
+  padding: 8px;
   align-items: center;
   justify-content: center;
-  min-width: 100px;
-  background-color: #e9ebf6;
-  border-radius: 12px;
+  min-width: 92px;
+  background-color: #fff;
+  border-radius: 6px;
   margin: 8px;
-  & img {
-    margin: 8px 0px;
-  }
+
   & .time,
   .weather-condition {
     color: #898989;
+  }
+
+  & img {
+    height: 50px;
+    margin-bottom: 4px;
   }
 
   &:hover {
@@ -40,7 +43,9 @@ function WeatherForecast(props: WeatherForeCastModel) {
       <Box>
         <img src={props.imgSrc} alt="" />
       </Box>
-      <Typography variant="h6"> {props.temperature}&#176;C</Typography>
+      <Typography variant="body1" className="temp">
+        {props.temperature}&#176;C
+      </Typography>
     </StyledWeatherForecastContainer>
   );
 }

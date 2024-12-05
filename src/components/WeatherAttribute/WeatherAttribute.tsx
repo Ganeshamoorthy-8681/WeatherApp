@@ -20,6 +20,11 @@ const StyledWeatherAttributeContainer = styled.div`
 
     & img {
       width: 36px;
+
+      @media (max-width: 576px) {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
   & .attr-text-wrapper {
@@ -31,6 +36,12 @@ const StyledWeatherAttributeContainer = styled.div`
       color: #898989;
       font-weight: bold;
     }
+  }
+  @media (max-width: 576px) {
+    width: 144px;
+    gap: 0.5rem;
+    border-radius: 8px;
+    padding: 8px;
   }
 `;
 

@@ -13,12 +13,18 @@ interface StyledCurrentWeatherContainerModel {
 const StyledCurrentWeatherContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => prop != "isDay",
 })<StyledCurrentWeatherContainerModel>`
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 8px 16px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15);
   transition: "background-color 0.5s";
+  min-width: 420px;
+
+  @media (max-width: 576px) {
+    min-width: unset;
+  }
 
   & .weather-details {
     display: flex;
@@ -33,9 +39,14 @@ const StyledCurrentWeatherContainer = styled.div.withConfig({
 
   & img {
     align-self: flex-end;
+
+    @media (max-width: 576px) {
+      width: 80px;
+    }
   }
   & .location {
     display: flex;
+    white-space: nowrap;
     align-items: center;
     color: #898989;
   }
@@ -43,6 +54,10 @@ const StyledCurrentWeatherContainer = styled.div.withConfig({
     color: #898989;
   }
 
+  & .is-day {
+    position: absolute;
+    right: 4px;
+  }
 `;
 
 const DayIcon = () => <WbSunny sx={{ fill: "yellow" }} />;
@@ -58,8 +73,8 @@ function CurrentWeather(props: CurrentWeatherModel) {
             <Typography className="time" variant="h6">
               {time}
             </Typography>
-            <Typography variant="h4">{temperature}&#176;C</Typography>
-            <Typography className="location" variant="body1">
+            <Typography variant="h3">{temperature}&#176;C</Typography>
+            <Typography className="location" variant="subtitle1">
               <PlaceIcon fontSize="small"></PlaceIcon>
               {location}
             </Typography>
@@ -69,10 +84,11 @@ function CurrentWeather(props: CurrentWeatherModel) {
         </Box>
 
         <Chip
+          className="is-day"
           variant="outlined"
           sx={{
-            padding: "12px",
-            backgroundColor: "darkblue",
+            padding: "4px",
+            backgroundColor: "#42516E",
             color: "white",
           }}
           icon={isDay ? <DayIcon /> : <NightIcon />}

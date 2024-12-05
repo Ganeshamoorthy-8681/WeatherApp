@@ -32,10 +32,14 @@ const StyledWeatherAppBaseContainer = styled.div`
 
   & .page-content {
     padding: 32px;
+    
+    @media (max-width: 768px) {
+      padding: 16px;
+    }
+
   }
 
   & .page-header {
-    height: 48px;
     background-color: #e9ebf6;
     padding: 16px;
     display: flex;
@@ -61,12 +65,6 @@ const StyledWeatherAppBaseContainer = styled.div`
         text-transform: uppercase;
         font-size: 1.2rem;
         font-weight: bold;
-      }
-    }
-
-    @media (max-width: 768px) {
-      & .page-content {
-        padding: 16px;
       }
     }
   }

@@ -41,9 +41,13 @@ const StyledAirQualityContainer = styled.div`
 
   & .content {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     margin-top: 16px;
     gap: 32px;
+
+    @media (max-width: 576px) {
+      justify-content: center;
+    }
   }
   & .air-pollutant-level-chart {
     min-width: 260px;
@@ -61,13 +65,17 @@ const StyledAirQualityContainer = styled.div`
   }
 
   & .air-quality-chart {
-    min-width: 220px;
+    min-width: 260px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
     border-radius: 12px;
     padding: 16px;
+
+    @media (max-width: 576px) {
+      min-width: 300px;
+    }
 
     & .chart-title {
       display: flex;
@@ -77,12 +85,6 @@ const StyledAirQualityContainer = styled.div`
       text-align: center;
       font-weight: bold;
     }
-  }
-
-  @media (max-width: 768px) {
-    // & .content {
-    //   flex-direction: column;
-    // }
   }
 `;
 
@@ -95,7 +97,6 @@ function AirQuality(props: AirQualityModel) {
       xAxisLabel: ["Co2", "No2", "O3", "So2", "PM2.5", "PM10"],
       yAxisLabel: "Pollutant Level (μg/m³)",
       barColors: ["#FF6347", "#FF4500", "#1E90FF", "#32CD32", "#FFD700", "#FF8C00"],
-      width: 360,
     };
     return barChartConfig;
   }
@@ -145,6 +146,7 @@ function AirQuality(props: AirQualityModel) {
             US EPA Index
             <Tooltip
               arrow
+              disableInteractive
               placement="top"
               title={
                 <Typography variant="body2">
@@ -163,6 +165,8 @@ function AirQuality(props: AirQualityModel) {
           <Typography variant="body1" className="chart-title">
             GB DEFRA Index
             <Tooltip
+              disableInteractive
+              enterTouchDelay={100}
               arrow
               placement="top"
               title={

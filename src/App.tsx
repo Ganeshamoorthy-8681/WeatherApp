@@ -2,13 +2,16 @@ import "./App.css";
 // require("dotenv").config();
 
 import WeatherAppBase from "./components/WeatherAppBase/WeatherAppBase";
+import ThemeContext from "./theme/theme";
 
 function App() {
   return (
     <>
-      <div className="container">
-        <WeatherAppBase />
-      </div>
+      <ThemeContext>
+        <div className="container">
+          <WeatherAppBase />
+        </div>
+      </ThemeContext>
     </>
   );
 }
